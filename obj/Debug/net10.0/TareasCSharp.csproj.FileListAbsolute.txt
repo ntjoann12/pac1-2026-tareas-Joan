@@ -1,0 +1,14 @@
+C:\Users\User\OneDrive\Desktop\DEV C#\Projects\PAC1-2026-Ipar\TareasCSharp\bin\Debug\net10.0\TareasCSharp.exe
+C:\Users\User\OneDrive\Desktop\DEV C#\Projects\PAC1-2026-Ipar\TareasCSharp\bin\Debug\net10.0\TareasCSharp.deps.json
+C:\Users\User\OneDrive\Desktop\DEV C#\Projects\PAC1-2026-Ipar\TareasCSharp\bin\Debug\net10.0\TareasCSharp.runtimeconfig.json
+C:\Users\User\OneDrive\Desktop\DEV C#\Projects\PAC1-2026-Ipar\TareasCSharp\bin\Debug\net10.0\TareasCSharp.dll
+C:\Users\User\OneDrive\Desktop\DEV C#\Projects\PAC1-2026-Ipar\TareasCSharp\bin\Debug\net10.0\TareasCSharp.pdb
+C:\Users\User\OneDrive\Desktop\DEV C#\Projects\PAC1-2026-Ipar\TareasCSharp\obj\Debug\net10.0\TareasCSharp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\OneDrive\Desktop\DEV C#\Projects\PAC1-2026-Ipar\TareasCSharp\obj\Debug\net10.0\TareasCSharp.AssemblyInfoInputs.cache
+C:\Users\User\OneDrive\Desktop\DEV C#\Projects\PAC1-2026-Ipar\TareasCSharp\obj\Debug\net10.0\TareasCSharp.AssemblyInfo.cs
+C:\Users\User\OneDrive\Desktop\DEV C#\Projects\PAC1-2026-Ipar\TareasCSharp\obj\Debug\net10.0\TareasCSharp.csproj.CoreCompileInputs.cache
+C:\Users\User\OneDrive\Desktop\DEV C#\Projects\PAC1-2026-Ipar\TareasCSharp\obj\Debug\net10.0\TareasCSharp.dll
+C:\Users\User\OneDrive\Desktop\DEV C#\Projects\PAC1-2026-Ipar\TareasCSharp\obj\Debug\net10.0\refint\TareasCSharp.dll
+C:\Users\User\OneDrive\Desktop\DEV C#\Projects\PAC1-2026-Ipar\TareasCSharp\obj\Debug\net10.0\TareasCSharp.pdb
+C:\Users\User\OneDrive\Desktop\DEV C#\Projects\PAC1-2026-Ipar\TareasCSharp\obj\Debug\net10.0\TareasCSharp.genruntimeconfig.cache
+C:\Users\User\OneDrive\Desktop\DEV C#\Projects\PAC1-2026-Ipar\TareasCSharp\obj\Debug\net10.0\ref\TareasCSharp.dll
