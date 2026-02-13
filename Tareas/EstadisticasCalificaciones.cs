@@ -1,5 +1,3 @@
-using System;
-
 namespace TareasCSharp.Tareas
 {
     public class EstadisticasCalificaciones
@@ -20,7 +18,7 @@ namespace TareasCSharp.Tareas
                 double nota;
                 do
                 {
-                    Console.Write($"Ingrese la calificación #{i + 1} (0 - 100): ");
+                    Console.Write("Ingrese la calificación " + (i + 1) + " (0 - 100): ");
                     nota = double.Parse(Console.ReadLine());
                     if (nota < 0 || nota > 100)
                         Console.WriteLine("Nota inválida. Debe estar entre 0 y 100.");
@@ -67,13 +65,31 @@ namespace TareasCSharp.Tareas
             return cantidadCalificaciones - ContarAprobados();
         }
 
+        // ===== CALCULAR DESVIACIÓN ESTÁNDAR SIN Math.Sqrt =====
         public double CalcularDesviacionEstandar()
         {
             double promedio = CalcularPromedio();
             double suma = 0;
             foreach (double nota in calificaciones)
-                suma += Math.Pow(nota - promedio, 2);
-            return Math.Sqrt(suma / cantidadCalificaciones);
+                suma += (nota - promedio) * (nota - promedio);
+
+            return RaizCuadrada(suma / cantidadCalificaciones);
+        }
+
+        // ===== FUNCIÓN PROPIA PARA RAÍZ CUADRADA =====
+        private double RaizCuadrada(double x)
+        {
+            if (x == 0) return 0;
+
+            double aproximacion = x;
+            double tolerancia = 0.00001;
+
+            while ((aproximacion * aproximacion - x) > tolerancia || (aproximacion * aproximacion - x) < -tolerancia)
+            {
+                aproximacion = (aproximacion + x / aproximacion) / 2;
+            }
+
+            return aproximacion;
         }
 
         // ===== MOSTRAR RESULTADOS SIMPLE =====

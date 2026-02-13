@@ -265,12 +265,8 @@ class Program
         //Estadisticas de califaciones
         NotasEstudiantes notasEstudiantes = new NotasEstudiantes();
 
-        notasEstudiantes.InicializarEstudiantes();
-        notasEstudiantes.PromedioPorEstudiante();
-        notasEstudiantes.PromedioPorParcial();
-        notasEstudiantes.MostrarMejorEstudiante();
-        notasEstudiantes.MostrarParcialDificil();
-        notasEstudiantes.MostrarResultados();
+        notasEstudiantes.PedirDatosEstudiantes();
+        notasEstudiantes.MostrarTodosResultados();
 
         //Busqueda y ordenamiento 
         ArregloNumeros arregloNumeros = new ArregloNumeros();
@@ -296,7 +292,7 @@ class Program
 
         TemperaturaSemana temperaturaSemana = new TemperaturaSemana();
 
-        temperaturaSemana.IngresarTemperaturas();
+        temperaturaSemana.PedirTemperaturas();
         temperaturaSemana.CalcularPromedio();
        temperaturaSemana.MostrarResumen();
 
