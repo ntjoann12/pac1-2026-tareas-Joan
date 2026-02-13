@@ -1,54 +1,58 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TareasCSharp.Tareas
 {
     public class ConversionesUnidadesAlm
     {
-        public float BytesAKB(float bytes)
+        // ===== ATRIBUTOS =====
+        private int opcionConversion;
+        private float valorIngresado;
+        private float resultadoConversion;
+
+        // ===== PEDIR DATOS =====
+        public void PedirDatos()
         {
-            float kb = bytes / 1024;
-            return kb;
+            Console.WriteLine("Seleccione la conversión:");
+            Console.WriteLine("1. Bytes a KB");
+            Console.WriteLine("2. Bytes a MB");
+            Console.WriteLine("3. Bytes a GB");
+            Console.WriteLine("4. Bytes a TB");
+            Console.WriteLine("5. KB a Bytes");
+            Console.WriteLine("6. MB a Bytes");
+            Console.WriteLine("7. GB a Bytes");
+            Console.WriteLine("8. TB a Bytes");
+
+            opcionConversion = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Ingrese el valor a convertir:");
+            valorIngresado = float.Parse(Console.ReadLine());
         }
 
-        public float BytesAMB(float bytes)
+        // ===== CALCULAR =====
+        public void Calcular()
         {
-            float mb = bytes / (1024 * 1024);
-            return mb;
+            if (opcionConversion == 1)
+                resultadoConversion = valorIngresado / 1024;
+            else if (opcionConversion == 2)
+                resultadoConversion = valorIngresado / (1024 * 1024);
+            else if (opcionConversion == 3)
+                resultadoConversion = valorIngresado / (1024 * 1024 * 1024);
+            else if (opcionConversion == 4)
+                resultadoConversion = valorIngresado / (1024f * 1024 * 1024 * 1024);
+            else if (opcionConversion == 5)
+                resultadoConversion = valorIngresado * 1024;
+            else if (opcionConversion == 6)
+                resultadoConversion = valorIngresado * 1024 * 1024;
+            else if (opcionConversion == 7)
+                resultadoConversion = valorIngresado * 1024 * 1024 * 1024;
+            else if (opcionConversion == 8)
+                resultadoConversion = valorIngresado * 1024 * 1024 * 1024 * 1024;
         }
 
-        public float BytesAGB(float bytes)
+        // ===== MOSTRAR RESULTADO =====
+        public void MostrarResultado()
         {
-            float gb = bytes / (1024 * 1024 * 1024);
-            return gb;
-        }
-
-        public float BytesATB(float bytes)
-        {
-            float tb = bytes / (1024f * 1024 * 1024 * 1024);
-            return tb;
-        }
-
-        public float KBABytes(float kb)
-        {
-            return kb * 1024;
-        }
-
-        public float MBABytes(float mb)
-        {
-            return mb * 1024 * 1024;
-        }
-
-        public float GBABytes(float gb)
-        {
-            return gb * 1024 * 1024 * 1024;
-        }
-
-        public float TBABytes(float tb)
-        {
-            return tb * 1024 * 1024 * 1024 * 1024;
+            Console.WriteLine("Resultado de la conversión: " + resultadoConversion);
         }
     }
 }

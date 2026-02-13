@@ -80,7 +80,7 @@ namespace TareasCSharp.Tareas
     }
 
     // Triángulo normal
-    private void Triangulo()
+    public void Triangulo()
     {
         for (int i = 1; i <= tamaño; i++)
         {
@@ -93,7 +93,7 @@ namespace TareasCSharp.Tareas
     }
 
     // Triángulo invertido
-    private void TrianguloInvertido()
+    public void TrianguloInvertido()
     {
         for (int i = tamaño; i >= 1; i--)
         {
@@ -106,7 +106,7 @@ namespace TareasCSharp.Tareas
     }
 
     // Rombo
-    private void Rombo()
+    public void Rombo()
     {
         // Parte superior
         for (int i = 1; i <= tamaño; i++)

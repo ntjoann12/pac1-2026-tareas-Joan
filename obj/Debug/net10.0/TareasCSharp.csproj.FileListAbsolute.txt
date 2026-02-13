@@ -12,3 +12,4 @@ C:\Users\User\OneDrive\Desktop\DEV C#\Projects\PAC1-2026-Ipar\TareasCSharp\obj\D
 C:\Users\User\OneDrive\Desktop\DEV C#\Projects\PAC1-2026-Ipar\TareasCSharp\obj\Debug\net10.0\TareasCSharp.pdb
 C:\Users\User\OneDrive\Desktop\DEV C#\Projects\PAC1-2026-Ipar\TareasCSharp\obj\Debug\net10.0\TareasCSharp.genruntimeconfig.cache
 C:\Users\User\OneDrive\Desktop\DEV C#\Projects\PAC1-2026-Ipar\TareasCSharp\obj\Debug\net10.0\ref\TareasCSharp.dll
+C:\Users\User\OneDrive\Desktop\DEV C#\Projects\PAC1-2026-Ipar\TareasCSharp\obj\Debug\net10.0\TareasCSharp.sourcelink.json

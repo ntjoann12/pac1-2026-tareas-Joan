@@ -7,19 +7,42 @@ namespace TareasCSharp.Tareas
 {
     public class TiempoTranscurrido 
     {
-        public int tiempoTranscurridoH( int hora1, int hora2)
+        private int hora1, hora2, minuto1, minuto2, segundo1, segundo2;
+        private int _diferenciaH, _diferenciaM, _diferencia_s;
+        public void PedirInstanciasTiempo()
+    {
+      Console.WriteLine("Ingrese hora 1: ");
+      hora1 = int.Parse(Console.ReadLine());
+      Console.WriteLine("Ingrese hora 2: ");
+      hora2 = int.Parse(Console.ReadLine());
+      Console.WriteLine("Ingrese minutos 1: ");
+      minuto1 = int.Parse(Console.ReadLine());
+      Console.WriteLine("Ingrese minutos 2: ");
+      minuto2 = int.Parse(Console.ReadLine());
+      Console.WriteLine("Ingrese segundos 1: ");
+      segundo1 = int.Parse(Console.ReadLine());
+      Console.WriteLine("Ingrese segundos 2: ");
+      segundo2 = int.Parse(Console.ReadLine());
+    }
+        public int tiempoTranscurridoH()
         {
-           int  diferencia_tiempoH = hora1 - hora2;
-             return diferencia_tiempoH;
+           return _diferenciaH = hora1 - hora2;
+             
         }
-        public int tiempoTranscurridoM( int minuto1, int minuto2)
+        public int tiempoTranscurridoM()
         {
-           int  diferencia_tiempoM = minuto1 - minuto2;
-             return diferencia_tiempoM;
-        }public int tiempoTranscurridoS( int segundo1, int segundo2)
+          return _diferenciaM = minuto1 - minuto2;
+          
+        }public int tiempoTranscurridoS()
         {
-           int  diferencia_tiempoS = segundo1 - segundo2;
-             return diferencia_tiempoS;
+          
+           return _diferencia_s = segundo1 - segundo2;
+           
         }
+        public void MostrasDiferenciasTiempo()
+    {
+      Console.WriteLine("La diferencias de tiempo son: ");
+      Console.WriteLine("Horas: " + _diferenciaH,"\nMinutos: " + _diferenciaM ,"\nSegundos: " + _diferencia_s);
+    }
     }
 }

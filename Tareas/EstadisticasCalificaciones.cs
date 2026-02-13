@@ -1,127 +1,90 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TareasCSharp.Tareas
 {
     public class EstadisticasCalificaciones
     {
         private double[] calificaciones;
-    private int cantidad;
+        private int cantidadCalificaciones;
 
-    // Constructor
-    public EstadisticasCalificaciones(int cantidad)
-    {
-        this.cantidad = cantidad;
-        calificaciones = new double[cantidad];
-    }
-
-    // Ingresar calificaciones con validación
-    public void IngresarCalificaciones()
-    {
-        for (int i = 0; i < cantidad; i++)
+        public EstadisticasCalificaciones(int cantidad)
         {
-            double nota;
-            do
+            cantidadCalificaciones = cantidad;
+            calificaciones = new double[cantidadCalificaciones];
+        }
+
+        public void IngresarCalificaciones()
+        {
+            for (int i = 0; i < cantidadCalificaciones; i++)
             {
-                Console.Write($"Ingrese la calificación #{i + 1} (0 - 100): ");
-                nota = double.Parse(Console.ReadLine());
-
-                if (nota < 0 || nota > 100)
+                double nota;
+                do
                 {
-                    Console.WriteLine("Nota inválida. Debe estar entre 0 y 100.");
-                }
+                    Console.Write($"Ingrese la calificación #{i + 1} (0 - 100): ");
+                    nota = double.Parse(Console.ReadLine());
+                    if (nota < 0 || nota > 100)
+                        Console.WriteLine("Nota inválida. Debe estar entre 0 y 100.");
+                } while (nota < 0 || nota > 100);
 
-            } while (nota < 0 || nota > 100);
-
-            calificaciones[i] = nota;
+                calificaciones[i] = nota;
+            }
         }
-    }
 
-    // Calcular promedio
-    public double CalcularPromedio()
-    {
-        double suma = 0;
-
-        foreach (double nota in calificaciones)
+        public double CalcularPromedio()
         {
-            suma += nota;
+            double suma = 0;
+            foreach (double nota in calificaciones)
+                suma += nota;
+            return suma / cantidadCalificaciones;
         }
 
-        return suma / cantidad;
-    }
-
-    public double ObtenerMaxima()
-    {
-        double max = calificaciones[0];
-
-        foreach (double nota in calificaciones)
+        public double ObtenerMaxima()
         {
-            if (nota > max)
-                max = nota;
+            double max = calificaciones[0];
+            foreach (double nota in calificaciones)
+                if (nota > max) max = nota;
+            return max;
         }
 
-        return max;
-    }
-
-    public double ObtenerMinima()
-    {
-        double min = calificaciones[0];
-
-        foreach (double nota in calificaciones)
+        public double ObtenerMinima()
         {
-            if (nota < min)
-                min = nota;
+            double min = calificaciones[0];
+            foreach (double nota in calificaciones)
+                if (nota < min) min = nota;
+            return min;
         }
 
-        return min;
-    }
-
-    public int ContarAprobados()
-    {
-        int aprobados = 0;
-
-        foreach (double nota in calificaciones)
+        public int ContarAprobados()
         {
-            if (nota >= 60)
-                aprobados++;
+            int aprobados = 0;
+            foreach (double nota in calificaciones)
+                if (nota >= 60) aprobados++;
+            return aprobados;
         }
 
-        return aprobados;
-    }
-
-    public int ContarReprobados()
-    {
-        return cantidad - ContarAprobados();
-    }
-
-    // Desviación estándar
-    public double CalcularDesviacionEstandar()
-    {
-        double promedio = CalcularPromedio();
-        double suma = 0;
-
-        foreach (double nota in calificaciones)
+        public int ContarReprobados()
         {
-            suma += Math.Pow(nota - promedio, 2);
+            return cantidadCalificaciones - ContarAprobados();
         }
 
-        return Math.Sqrt(suma / cantidad);
-    }
+        public double CalcularDesviacionEstandar()
+        {
+            double promedio = CalcularPromedio();
+            double suma = 0;
+            foreach (double nota in calificaciones)
+                suma += Math.Pow(nota - promedio, 2);
+            return Math.Sqrt(suma / cantidadCalificaciones);
+        }
 
-    // Mostrar resultados
-    public void MostrarResultados()
-    {
-        Console.Clear();
-        Console.WriteLine("ESTADÍSTICAS DE CALIFICACIONES");
-        Console.WriteLine("-----------------------------");
-        Console.WriteLine($"Promedio: {CalcularPromedio():0.00}");
-        Console.WriteLine($"Nota máxima: {ObtenerMaxima()}");
-        Console.WriteLine($"Nota mínima: {ObtenerMinima()}");
-        Console.WriteLine($"Aprobados: {ContarAprobados()}");
-        Console.WriteLine($"Reprobados: {ContarReprobados()}");
-        Console.WriteLine($"Desviación estándar: {CalcularDesviacionEstandar():0.00}");
-    }
+        // ===== MOSTRAR RESULTADOS SIMPLE =====
+        public void MostrarResultados()
+        {
+            Console.WriteLine("Promedio: " + CalcularPromedio());
+            Console.WriteLine("Nota máxima: " + ObtenerMaxima());
+            Console.WriteLine("Nota mínima: " + ObtenerMinima());
+            Console.WriteLine("Aprobados: " + ContarAprobados());
+            Console.WriteLine("Reprobados: " + ContarReprobados());
+            Console.WriteLine("Desviación estándar: " + CalcularDesviacionEstandar());
+        }
     }
 }

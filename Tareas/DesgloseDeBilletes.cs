@@ -8,9 +8,15 @@ namespace TareasCSharp.Tareas
 {
    public class DesgloseDeBilletes
 {
-    public int Desglose_de_Billetes(int n1)
+    private int _monto;
+    public void PedirCantidadADesglosar()
+        {
+            Console.WriteLine("Ingrese cantidad de dinero para desglose:");
+             _monto = int.Parse(Console.ReadLine());
+        }
+    public int Desglose_de_Billetes()
     {
-        int N = n1;
+        int N = _monto;
 
         int[] billetes = { 500, 200, 100, 50, 20, 10, 5, 2, 1 };
 

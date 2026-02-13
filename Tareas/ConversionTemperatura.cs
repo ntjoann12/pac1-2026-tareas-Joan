@@ -7,8 +7,8 @@ namespace TareasCSharp.Tareas
 {
     public class ConversionTemperatura
     {
-        float n1;
-        float F, C, K;
+        private float n1;
+        private float F, C, K;
         public float Celsius_a_Fahrenheit (float N1)
         {
              F = (n1 * 1.8f) + 32f;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using TareasCSharp.Tareas;
 
 class Program
@@ -54,30 +55,35 @@ class Program
 
         // IMC
         CalculadoraIMC_1 imcCalc = new CalculadoraIMC_1();
-        Console.WriteLine("Ingrese su peso (kg):");
-        int peso = int.Parse(Console.ReadLine());
-        Console.WriteLine("Ingrese su altura (m):");
-        float altura = float.Parse(Console.ReadLine());
-        float imc = imcCalc.calculadoraIMC(peso, altura);
 
-        if (imc < 18.5f)
-            Console.WriteLine($"IMC: {imc} - Bajo peso");
-        else if (imc < 24.9f)
-            Console.WriteLine($"IMC: {imc} - Peso normal");
-        else if (imc < 29.9f)
-            Console.WriteLine($"IMC: {imc} - Sobrepeso");
-        else
-            Console.WriteLine($"IMC: {imc} - Obesidad");
-
+        imcCalc.PedirDatos();
+        imcCalc.calculadoraIMC();
+        imcCalc.MostrarResultados();
+        
         // Conversion de Temperaturas
         ConversionTemperatura convTemp = new ConversionTemperatura();
-        Console.WriteLine("Conversión de temperaturas:");
-        Console.WriteLine("1.Celsius a Fahrenheit\n2.Fahrenheit a Celsius\n3.Celsius a Kelvin\n4.Kelvin a Celsius\n5.Fahrenheit a Kelvin");
+        Console.WriteLine("----Conversión de temperaturas:----");
+        Console.WriteLine("1.Celsius a Fahrenheit\n2.Fahrenheit a Celsius\n3.Celsius a Kelvin\n4.Kelvin a Celsius\n5.Fahrenheit a Kelvin\n6.Salir del programa");
         int op = int.Parse(Console.ReadLine());
         Console.WriteLine("Ingrese la temperatura:");
         float temp = float.Parse(Console.ReadLine());
         float res = 0;
+        bool salir = false;
 
+    do
+    {
+        switch (op)
+        {
+            case 1: res = convTemp.Celsius_a_Fahrenheit(temp); Console.WriteLine("Fahrenheit: " + res); salir = false; break;
+            case 2: res = convTemp.Fahrenheit_a_Celsius(temp); Console.WriteLine("Celsius: " + res); salir = false; break;
+            case 3: res = convTemp.Celsius_a_Kelvin(temp); Console.WriteLine("Kelvin: " + res); salir = false; break;
+            case 4: res = convTemp.Kelvin_a_Celsius(temp); Console.WriteLine("Celsius: " + res); salir = false; break;
+            case 5: res = convTemp.Fahrenheit_a_Kelvin(temp); Console.WriteLine("Kelvin: " + res); salir = false; break;
+            case 6: Console.WriteLine("Saliendo del programa..."); salir = true; break;
+            default: Console.WriteLine("Opción no válida"); 
+            break;
+        }
+         }while(salir == true);
         switch (op)
         {
             case 1: res = convTemp.Celsius_a_Fahrenheit(temp); Console.WriteLine("Fahrenheit: " + res); break;
@@ -90,21 +96,56 @@ class Program
 
         // Desglose de billetes
         DesgloseDeBilletes billetes = new DesgloseDeBilletes();
-        Console.WriteLine("Ingrese cantidad de dinero para desglose:");
-        int monto = int.Parse(Console.ReadLine());
-        billetes.Desglose_de_Billetes(monto);
+        billetes.PedirCantidadADesglosar();
+        billetes.Desglose_de_Billetes();
 
         // Calculadora de préstamo
-        CalculadoraDePrestamoSimple prestamo = new CalculadoraDePrestamoSimple();
+        CalculadoraDePrestamoSimple calculadoraDePrestamoSimple= new CalculadoraDePrestamoSimple();
+
         Console.WriteLine("Ingrese monto a solicitar:");
-        int monto_solicitado = int.Parse(Console.ReadLine());
+        int monto = int.Parse(Console.ReadLine());
+
         Console.WriteLine("Ingrese tasa de interés (decimal):");
         float tasa = float.Parse(Console.ReadLine());
+
         Console.WriteLine("Ingrese plazo en meses:");
         int plazo = int.Parse(Console.ReadLine());
-        float cuota = prestamo.CuotaMensualFija(monto_solicitado, tasa);
-        float interes = prestamo.InteresTotal(monto_solicitado, plazo, cuota);
-        Console.WriteLine($"Cuota mensual: {cuota}, Interés total: {interes}");
+
+        float cuota = calculadoraDePrestamoSimple.CuotaMensualFija(monto, tasa);
+        float interes = calculadoraDePrestamoSimple.InteresTotal(monto, plazo, cuota);
+
+        Console.WriteLine("Cuota mensual: " + cuota);
+        Console.WriteLine("Interés total: " + interes);
+
+
+        //Tiempo Transcurrido
+        TiempoTranscurrido tiempoTranscurrido = new TiempoTranscurrido();
+        tiempoTranscurrido.PedirInstanciasTiempo();
+        tiempoTranscurrido.tiempoTranscurridoH();
+        tiempoTranscurrido.tiempoTranscurridoM();
+        tiempoTranscurrido.tiempoTranscurridoS();
+
+        //Area y perimetro
+        CalculadoraAreaPerimetro calculadoraAreaPerimetro = new CalculadoraAreaPerimetro();
+        calculadoraAreaPerimetro.PedirDatos();
+        calculadoraAreaPerimetro.Calcular();
+        calculadoraAreaPerimetro.MostrarResultados();
+
+        //Conversion de unidades de almacenamiento 
+        ConversionesUnidadesAlm conversionesUnidadesAlm = new ConversionesUnidadesAlm();
+        conversionesUnidadesAlm.PedirDatos();
+        conversionesUnidadesAlm.Calcular();
+        conversionesUnidadesAlm.MostrarResultado();
+
+        //Calculo de salario
+        CalculoSalarioSemanal calculoSalarioSemanal = new CalculoSalarioSemanal();
+        calculoSalarioSemanal.PedirDatos();
+        calculoSalarioSemanal.CalcularSalario();
+        calculoSalarioSemanal.MostrarSalario();
+
+
+        
+
     }
 
     // BLOQUE 2: Condicionales
@@ -145,6 +186,28 @@ class Program
         float montoCompra = float.Parse(Console.ReadLine());
         Console.WriteLine("Descuento: " + descuentos.CalcularDescuento(montoCompra));
         Console.WriteLine("Precio final: " + descuentos.CalcularPrecioFinal(montoCompra));
+
+        //Anio bisiestos y dias del mes
+        Calendario calendario = new Calendario();
+        calendario.PedirDatos();
+        calendario.EsBisiesto();
+        calendario.ObtenerDiasMes();
+        calendario.MostrarResultado();
+
+        //Validador de fecha
+        ValidadorFecha validadorFecha = new ValidadorFecha();
+        validadorFecha.PedirDatos();
+        validadorFecha.EsBisiesto();
+        validadorFecha.DiasDelMes();
+        validadorFecha.FechaValida();
+        validadorFecha.MostrarResultado();
+
+        //Cajero automatico 
+        Retiro retiro = new Retiro();
+        retiro.PedirMonto();
+        retiro.RetiroValido();
+        retiro.MostrarDesglose();
+
     }
 
     // BLOQUE 3: Ciclos
@@ -176,20 +239,112 @@ class Program
         JuegoDeAdivinanza juego = new JuegoDeAdivinanza();
         juego.GenerarNumero();
         juego.JuegoUsuario();
+
+        //Validacion de contras
+        ValidacionDeContras validacionDeContras = new ValidacionDeContras();
+
+        validacionDeContras.SolicitarContrasenaSegura();
+        
+        //Patron de asteriscos
+        PatronesAsteriscos patronesAsteriscos = new PatronesAsteriscos();
+
+        patronesAsteriscos.PedirTamaño();
+        patronesAsteriscos.MostrarMenu();
+
+        //Calculadora menu
+        Calculadora calculadora = new Calculadora();
+
+        calculadora.MostrarMenu();
     }
 
     // BLOQUE 4: Arreglos Unidimensionales
     static void BloqueArreglosUnidimensionales()
     {
         Console.WriteLine("=== BLOQUE 4: Arreglos Unidimensionales ===");
-        Console.WriteLine("Aquí irían las clases que trabajan con vectores/arrays unidimensionales.");
-        // Por ejemplo: ValidacionDeContras, Retiro, etc. según tus tareas.
+
+        //Estadisticas de califaciones
+        NotasEstudiantes notasEstudiantes = new NotasEstudiantes();
+
+        notasEstudiantes.InicializarEstudiantes();
+        notasEstudiantes.PromedioPorEstudiante();
+        notasEstudiantes.PromedioPorParcial();
+        notasEstudiantes.MostrarMejorEstudiante();
+        notasEstudiantes.MostrarParcialDificil();
+        notasEstudiantes.MostrarResultados();
+
+        //Busqueda y ordenamiento 
+        ArregloNumeros arregloNumeros = new ArregloNumeros();
+        arregloNumeros.LlenarArreglo();
+        arregloNumeros.BuscarNumero();
+        arregloNumeros.SegundoMayor();
+        arregloNumeros.OrdenarBurbuja();
+
+        //Rotacion arreglo 
+        RotacionArreglo rotacionArreglo = new RotacionArreglo();
+
+        rotacionArreglo.InicializarArreglo();
+        rotacionArreglo.MostrarMenu();
+
+        //Frecuencia de elementos
+        FrecuenciaNumeros frecuenciaNumeros = new FrecuenciaNumeros();
+
+        frecuenciaNumeros.GenerarNumeros();
+        frecuenciaNumeros.CalcularFrecuencias();
+        frecuenciaNumeros.MostrarFrecuencias();
+
+        //Arreglo de temperaturas
+
+        TemperaturaSemana temperaturaSemana = new TemperaturaSemana();
+
+        temperaturaSemana.IngresarTemperaturas();
+        temperaturaSemana.CalcularPromedio();
+       temperaturaSemana.MostrarResumen();
+
     }
 
     // BLOQUE 5: Arreglos Bidimensionales
     static void BloqueArreglosBidimensionales()
     {
         Console.WriteLine("=== BLOQUE 5: Arreglos Bidimensionales ===");
-        Console.WriteLine("Aquí irían las clases que trabajan con matrices/arreglos 2D.");
+        
+        // Matriz de nota paracial por parcial 
+        EstadisticasCalificaciones estadisticasCalificaciones = new EstadisticasCalificaciones(5); //Se pone la cantidad de calificaciones 
+        estadisticasCalificaciones.IngresarCalificaciones();
+        estadisticasCalificaciones.MostrarResultados();
+
+// Juego de Gato
+JuegoTicTacToe juegoTicTacToe = new JuegoTicTacToe();
+juegoTicTacToe.InicializarTablero();
+
+while (true)
+{
+    juegoTicTacToe.MostrarTablero();
+
+    if (juegoTicTacToe.HacerMovimiento())
+    {
+        juegoTicTacToe.MostrarTablero();
+        Console.WriteLine("Jugador " + juegoTicTacToe.JugadorActual() + " gana!");
+        break;
+    }
+
+    if (juegoTicTacToe.VerificarEmpate())
+    {
+        juegoTicTacToe.MostrarTablero();
+        Console.WriteLine("Empate!");
+        break;
+    }
+
+    juegoTicTacToe.CambiarJugador();
+}
+
+        // Inventario simple
+        Inventario inventario = new Inventario();
+
+        inventario.InicializarInventario();
+        inventario.MostrarInventario();
+        inventario.BuscarProducto();
+        inventario.ActualizarCantidad();
+        inventario.MostrarInventario();
+        inventario.ValorTotalInventario();
     }
 }
